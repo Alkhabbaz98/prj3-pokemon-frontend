@@ -9,7 +9,9 @@ import NavBar from "./components/NavBar/NavBar";
 const App = () => {
   const [pokemon, setPokemon] = useState([{}]);
   const getPokemon = async () => {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon/");
+    const response = await axios.get(
+      "https://pokeapi.co/api/v2/pokemon?limit=151"
+    );
     setPokemon(response.data.results);
   };
 
