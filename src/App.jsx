@@ -5,6 +5,7 @@ import {jwtDecode} from 'jwt-decode'
 
 
 import PokemonList from "./components/List/PokemonList";
+import PokemonDetails from "./components/Details/PokemonDetails";
 import NavBar from "./components/NavBar/NavBar";
 import LoginForm from "./components/User/LoginForm";
 import SignUp from "./components/User/SignupForm";
@@ -14,11 +15,12 @@ import LogoutButton from "./components/LogoutButton/LogoutButton";
 
 
 const App = () => {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState([{}]);
   const getPokemon = async () => {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon/");
-    console.log(response.data);
-    setPokemon(response.result);
+    const response = await axios.get(
+      "https://pokeapi.co/api/v2/pokemon?limit=151"
+    );
+    setPokemon(response.data.results);
   };
 
 // Auth:
@@ -63,7 +65,10 @@ if (token) {
           path="/pokewiki/pokemons"
           element={<PokemonList pokemon={pokemon} />}
         />
-        <Route path="/pokewiki/pokemons/:" />
+        <Route
+          path="/pokewiki/pokemons/:pokeName"
+          element={<PokemonDetails pokemon={pokemon} />}
+        />
       </Routes>
     </Router>
   );
