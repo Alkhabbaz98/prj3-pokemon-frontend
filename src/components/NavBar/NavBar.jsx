@@ -4,13 +4,15 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <nav className="navbar">
-      <p className="logo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuLvq_z6fGcatFZVwO9KBw03rgVetQA-p9Q&s" />{" "}
-        PokeWiki
-      </p>
-      <Link to="/pokewiki/pokemons" className="nav-link">
-        Pokemon List
-      </Link>
+      <div className="navbar-container">
+        <p className="logo">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuLvq_z6fGcatFZVwO9KBw03rgVetQA-p9Q&s" />{" "}
+          PokeWiki
+        </p>
+        <Link to="/pokewiki/pokemons" className="nav-link">
+          Pokemon List
+        </Link>
+      </div>
     </nav>
   );
 };
