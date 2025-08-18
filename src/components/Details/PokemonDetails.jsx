@@ -32,7 +32,6 @@ const PokemonDetails = ({ typeColors }) => {
       })
     );
     setMovesDetails(response);
-    console.log("detailed moves: ", movesDetails);
   };
 
   useEffect(() => {
@@ -183,6 +182,7 @@ const PokemonDetails = ({ typeColors }) => {
                 })}
               </ul>
             </div>
+            {console.log("details moves:", movesDetails[0].data)}
           </div>
         </div>
       ) : (
