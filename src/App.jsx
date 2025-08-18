@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import axios from "axios";
+import {jwtDecode} from 'jwt-decode'
+
 
 import PokemonList from "./components/List/PokemonList";
 import PokemonDetails from "./components/Details/PokemonDetails";
 import NavBar from "./components/NavBar/NavBar";
+import LoginForm from "./components/User/LoginForm";
+import SignUp from "./components/User/SignupForm";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import LogoutButton from "./components/LogoutButton/LogoutButton";
+
+
 
 const App = () => {
   const [pokemon, setPokemon] = useState([{}]);
@@ -15,14 +23,44 @@ const App = () => {
     setPokemon(response.data.results);
   };
 
+// Auth:
+const [token, setToken] = useState(localStorage.getItem('token'))
+
+function handleLogin(newToken) {
+  setToken(newToken)
+}
+
+function handleLogout() {
+  setToken(null)
+  localStorage.removeItem('token')
+}
+
+
+if (token) {
+  const decodedToken = jwtDecode(token)
+  console.log(decodedToken)
+}
+
+// ===========
   useEffect(() => {
     getPokemon();
   }, []);
 
+
+
+
+
+
+
   return (
     <Router>
       <NavBar />
+      <>
+      {token ? <LogoutButton onLogout={handleLogout} /> : null}
+      </>
       <Routes>
+        <Route path="/user/login" element={<LoginForm onLogin={handleLogin}/>}/>
+        <Route path="/user/signup" element={<SignUp />} />
         <Route
           path="/pokewiki/pokemons"
           element={<PokemonList pokemon={pokemon} />}
