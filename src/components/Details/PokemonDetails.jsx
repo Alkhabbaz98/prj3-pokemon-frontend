@@ -6,11 +6,19 @@ import { ClipLoader } from "react-spinners";
 const PokemonDetails = () => {
   const params = useParams();
   const [thisPokemon, setThisPokemon] = useState();
+  const [moves, setMoves] = useState([]);
 
   const getThisPokemon = async () => {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${params.pokeName}`
     );
+    let filteredMoves = response.data.moves.sort((a, b) => {
+      return (
+        a.version_group_details[0].level_learned_at -
+        b.version_group_details[0].level_learned_at
+      );
+    });
+    setMoves(filteredMoves);
     setThisPokemon(response.data);
   };
 
@@ -36,7 +44,7 @@ const PokemonDetails = () => {
                 })}
               </p>
               <hr />
-              <li>Height: {thisPokemon.height}cm</li>
+              <li>Height: {thisPokemon.height} cm</li>
               <hr />
               <li>Weight: {thisPokemon.weight}00 grams</li>
               <hr />
@@ -64,7 +72,7 @@ const PokemonDetails = () => {
           <div>
             <h2>Moves</h2>
             <ul>
-              {thisPokemon.moves.map((element) => {
+              {moves.map((element) => {
                 return element.version_group_details[0].move_learn_method
                   .name === "level-up" ? (
                   <li key={element.move.name}>
