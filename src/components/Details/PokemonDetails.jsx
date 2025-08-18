@@ -25,6 +25,7 @@ const PokemonDetails = ({ typeColors }) => {
     setThisPokemon(response.data);
     getMovesDetails(filteredMoves);
   };
+  // getting more details for each moveset
   const getMovesDetails = async (filteredMoves) => {
     let response = await Promise.all(
       filteredMoves.map((element) => {
@@ -182,7 +183,7 @@ const PokemonDetails = ({ typeColors }) => {
                 })}
               </ul>
             </div>
-            {console.log("details moves:", movesDetails[0].data)}
+            {/* {console.log("details moves:", movesDetails[0].data)} */}
           </div>
         </div>
       ) : (
