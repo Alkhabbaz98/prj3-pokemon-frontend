@@ -1,13 +1,13 @@
 import { Link } from "react-router"
 
-const PokemonList = (props) =>{
+const PokemonList = ({pokemon}) =>{
     return (
         <>
         <h1>Pokemons Available</h1> 
         <ul>
-        {props.pokemon.map((onePoke) => (
+        {pokemon.map((onePoke) => (
             <li>
-                <Link to={`/pokewiki/pokemon/${onePoke.id}`}>
+                <Link to={`/pokewiki/pokemons/${onePoke.id}`}>
                 {onePoke.name}
                 </Link>
             </li>
