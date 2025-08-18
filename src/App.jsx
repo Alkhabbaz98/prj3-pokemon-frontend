@@ -5,7 +5,7 @@ import axios from "axios";
 import PokemonList from "./components/List/PokemonList";
 import NavBar from "./components/NavBar/NavBar";
 import LoginForm from "./components/User/LoginForm";
-
+import SignUp from "./components/User/SignupForm";
 
 const App = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -51,8 +51,8 @@ if (token) {
       {token ? <LogoutButton onLogout={handleLogout} /> : null}
       </>
       <Routes>
-        <Route path="/login" element={<LoginForm onLogin={handleLogin}/>}/>
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="pokewiki/login" element={<LoginForm onLogin={handleLogin}/>}/>
+        <Route path="pokewiki/signup" element={<SignUp />} />
         <Route
           path="/pokewiki/pokemons"
           element={<PokemonList pokemon={pokemon} />}
