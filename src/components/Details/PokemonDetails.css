@@ -1,0 +1,120 @@
+/* general tags css */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("https://st2.depositphotos.com/7507618/12045/v/450/depositphotos_120454410-stock-illustration-pokeball-seamless-pattern.jpg"); /* https://i.imgur.com/O7ZWigt.png */
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 20px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgb(170, 24, 24);
+  padding-bottom: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid;
+}
+
+/* Pokemon card details css */
+.pokemon-card {
+  background-color: white;
+  border: 3px solid;
+  border-radius: 16px;
+  padding: 200px;
+  max-width: 1100px;
+  margin: 20px auto;
+}
+/* Header section of pokemon card */
+.poke-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.poke-img {
+  width: 350px;
+  height: 350px;
+}
+
+/* Types section in pokedex data */
+.type-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+.type-label {
+  font-size: 40x;
+}
+.type-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+.type-badge {
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.type-badges p {
+  align-self: flex-start;
+}
+
+.poke-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px;
+}
+
+.pokedex-data,
+.base-stats,
+.moves {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+/* moves list */
+.moves ul {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.moves li {
+  font-size: 16px;
+  background: rgb(245, 238, 238);
+  margin: 4px 0;
+  padding: 6px;
+  border-radius: 6px;
+}

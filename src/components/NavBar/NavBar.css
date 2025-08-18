@@ -1,0 +1,29 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: red;
+  padding: 10px 20px;
+  top: 0;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+img {
+  width: 30px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: gold;
+}

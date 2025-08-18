@@ -1,10 +1,17 @@
 import { Link } from "react-router";
+import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    <>
-      <Link to="/pokewiki/pokemons">Pokemon List</Link>
-    </>
+    <nav className="navbar">
+      <p className="logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuLvq_z6fGcatFZVwO9KBw03rgVetQA-p9Q&s" />{" "}
+        PokeWiki
+      </p>
+      <Link to="/pokewiki/pokemons" className="nav-link">
+        Pokemon List
+      </Link>
+    </nav>
   );
 };
 
