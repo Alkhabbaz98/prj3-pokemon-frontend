@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import axios from "axios";
-import {jwtDecode} from 'jwt-decode'
-
+import { jwtDecode } from "jwt-decode";
 
 import PokemonList from "./components/List/PokemonList";
 import PokemonDetails from "./components/Details/PokemonDetails";
@@ -12,9 +11,23 @@ import SignUp from "./components/User/SignupForm";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import LogoutButton from "./components/LogoutButton/LogoutButton";
 
-
-
 const App = () => {
+  const typeColors = {
+    grass: "green",
+    fire: "red",
+    water: "blue",
+    poison: "purple",
+    electric: "yellow",
+    bug: "olive",
+    normal: " gray",
+    flying: "skyblue",
+    psychic: "pink",
+    dark: "darkpurple",
+    ground: "brown",
+    ice: "lightblue",
+    rock: "orange",
+    dragon: "indigo",
+  };
   const [pokemon, setPokemon] = useState([{}]);
   const getPokemon = async () => {
     const response = await axios.get(
@@ -23,43 +36,37 @@ const App = () => {
     setPokemon(response.data.results);
   };
 
-// Auth:
-const [token, setToken] = useState(localStorage.getItem('token'))
+  // Auth:
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
-function handleLogin(newToken) {
-  setToken(newToken)
-}
+  function handleLogin(newToken) {
+    setToken(newToken);
+  }
 
-function handleLogout() {
-  setToken(null)
-  localStorage.removeItem('token')
-}
+  function handleLogout() {
+    setToken(null);
+    localStorage.removeItem("token");
+  }
 
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    console.log(decodedToken);
+  }
 
-if (token) {
-  const decodedToken = jwtDecode(token)
-  console.log(decodedToken)
-}
-
-// ===========
+  // ===========
   useEffect(() => {
     getPokemon();
   }, []);
 
-
-
-
-
-
-
   return (
     <Router>
       <NavBar />
-      <>
-      {token ? <LogoutButton onLogout={handleLogout} /> : null}
-      </>
+      <>{token ? <LogoutButton onLogout={handleLogout} /> : null}</>
       <Routes>
-        <Route path="/user/login" element={<LoginForm onLogin={handleLogin}/>}/>
+        <Route
+          path="/user/login"
+          element={<LoginForm onLogin={handleLogin} />}
+        />
         <Route path="/user/signup" element={<SignUp />} />
         <Route
           path="/pokewiki/pokemons"
@@ -67,7 +74,7 @@ if (token) {
         />
         <Route
           path="/pokewiki/pokemons/:pokeName"
-          element={<PokemonDetails pokemon={pokemon} />}
+          element={<PokemonDetails pokemon={pokemon} typeColors={typeColors} />}
         />
       </Routes>
     </Router>

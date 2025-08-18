@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("https://st2.depositphotos.com/7507618/12045/v/450/depositphotos_120454410-stock-illustration-pokeball-seamless-pattern.jpg"); /* https://i.imgur.com/O7ZWigt.png */
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 20px;
+}
+.pokemon-card {
+  background-color: white;
+  border: 3px solid;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 20px auto;
+}
+
+.type-badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+.type-badge {
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.poke-img {
+  width: 200px;
+  height: 200px;
+}
+.poke-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px;
+}
+
+.pokedex-data,
+.base-stats,
+.moves {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgb(170, 24, 24);
+  padding-bottom: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid;
+}
+
+.moves ul {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.moves li {
+  font-size: 13px;
+  background: rgb(245, 238, 238);
+  margin: 4px 0;
+  padding: 6px;
+  border-radius: 6px;
+}
