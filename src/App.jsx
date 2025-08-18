@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import axios from "axios";
 
 import PokemonList from "./components/List/PokemonList";
+import PokemonDetails from "./components/Details/PokemonDetails";
 import NavBar from "./components/NavBar/NavBar";
 
 const App = () => {
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState([{}]);
   const getPokemon = async () => {
     const response = await axios.get("https://pokeapi.co/api/v2/pokemon/");
-    console.log(response.data);
-    setPokemon(response.data);
+    setPokemon(response.data.results);
   };
 
   useEffect(() => {
@@ -25,7 +25,10 @@ const App = () => {
           path="/pokewiki/pokemons"
           element={<PokemonList pokemon={pokemon} />}
         />
-        <Route path="/pokewiki/pokemons/:" />
+        <Route
+          path="/pokewiki/pokemons/:pokeName"
+          element={<PokemonDetails pokemon={pokemon} />}
+        />
       </Routes>
     </Router>
   );
