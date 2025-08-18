@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./PokemonList.css";
 
 const PokemonList = ({ pokemon }) => {
   const [list, setList] = useState([]);
@@ -23,10 +24,16 @@ const PokemonList = ({ pokemon }) => {
   return (
     <>
       <h1>Generation 1 Pokemon</h1>
-      <div>
-        {pokemon.map((onePoke) => (
+      <div className="poke-container">
+        {pokemon.map((onePoke, index) => (
           <Link to={`/pokewiki/pokemons/${onePoke.name}`}>
-            <div key={onePoke.name}>{onePoke.name}</div>
+            <div className="poke-elem" key={onePoke.name}>
+              <img
+                className="elem-img"
+                src={list[index]?.sprites?.other["home"]?.front_default}
+              />
+              {onePoke.name}
+            </div>
           </Link>
         ))}
       </div>
