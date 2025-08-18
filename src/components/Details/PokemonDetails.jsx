@@ -18,7 +18,6 @@ const PokemonDetails = () => {
         b.version_group_details[0].level_learned_at
       );
     });
-    console.log(filteredMoves);
     setMoves(filteredMoves);
     setThisPokemon(response.data);
   };
