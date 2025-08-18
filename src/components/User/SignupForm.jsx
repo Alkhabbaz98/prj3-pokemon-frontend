@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 
-const Backend_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
+const Backend_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
 
 function SignUp() {
   const [username, setUsername] = useState('')
@@ -12,7 +12,7 @@ function SignUp() {
   const handleSubmit = async event => {
     event.preventDefault()
     try {
-      await axios.post(`${Backend_URL}}/auth/signup`, {
+      await axios.post(`${Backend_URL}}/user/signup`, {
         username,
         password
       })

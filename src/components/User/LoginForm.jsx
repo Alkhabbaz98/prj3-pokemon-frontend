@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 
-const Backend_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
+const Backend_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
 
 
 function LoginForm({ onLogin }) {
@@ -14,7 +14,7 @@ function LoginForm({ onLogin }) {
   const handleSubmit = async event => {
     event.preventDefault()
     try {
-      const res = await axios.post(`${Backend_URL}/auth/login`, {
+      const res = await axios.post(`${Backend_URL}/user/login`, {
         username,
         password
       })
@@ -22,6 +22,7 @@ function LoginForm({ onLogin }) {
       onLogin(res.data.token)
       navigate('/pokewiki')
     } catch (err) {
+        console.log(err)
       alert(err.response?.data?.message || 'Login failed')
     }
   }

@@ -13,6 +13,7 @@
     "axios": "^1.11.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
+    "jwt-decode": "^4.0.0",
     "morgan": "^1.10.1",
     "pokedex-promise-v2": "^4.2.1",
     "react": "^19.1.1",

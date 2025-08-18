@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import axios from "axios";
+import {jwtDecode} from 'jwt-decode'
+
 
 import PokemonList from "./components/List/PokemonList";
 import NavBar from "./components/NavBar/NavBar";
 import LoginForm from "./components/User/LoginForm";
 import SignUp from "./components/User/SignupForm";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import LogoutButton from "./components/LogoutButton/LogoutButton";
+
+
 
 const App = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -51,8 +57,8 @@ if (token) {
       {token ? <LogoutButton onLogout={handleLogout} /> : null}
       </>
       <Routes>
-        <Route path="pokewiki/login" element={<LoginForm onLogin={handleLogin}/>}/>
-        <Route path="pokewiki/signup" element={<SignUp />} />
+        <Route path="/user/login" element={<LoginForm onLogin={handleLogin}/>}/>
+        <Route path="/user/signup" element={<SignUp />} />
         <Route
           path="/pokewiki/pokemons"
           element={<PokemonList pokemon={pokemon} />}
