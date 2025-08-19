@@ -1,7 +1,8 @@
 /* general tags css */
 body {
   font-family: Arial, sans-serif;
-  background-image: url("https://images.wallpapersden.com/image/download/pokemon-pikachu-art_a25tbW6UmZqaraWkpJRmbmdlrWZlbWU.jpg"); /* https://i.imgur.com/O7ZWigt.png */
+  /* background-image: url("https://images.wallpapersden.com/image/download/pokemon-pikachu-art_a25tbW6UmZqaraWkpJRmbmdlrWZlbWU.jpg"); https://i.imgur.com/O7ZWigt.png */
+  background-color: rgb(12, 12, 101);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -65,7 +66,6 @@ hr {
 /* Types section in pokedex data */
 .type-row {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 8px;
   margin: 10px 0;

@@ -23,7 +23,7 @@ const PokemonList = ({ pokemon, typeColors }) => {
 
   return (
     <>
-      <h1>Generation 1 Pokemon</h1>
+      <h1 className="title">Generation 1 Pokemon</h1>
       {list ? (
         <div className="poke-container">
           {pokemon.map((onePoke, index) => (
