@@ -23,7 +23,7 @@
   text-transform: capitalize;
   width: 150px;
 }
-p {
+.poke-mini-details {
   margin: 10px;
 }
 /* Pokemon img */

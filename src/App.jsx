@@ -12,7 +12,6 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import LogoutButton from "./components/LogoutButton/LogoutButton";
 import PokemonTeamForm from "./components/Form/PokemonTeamForm";
 
-
 const App = () => {
   const typeColors = {
     grass: "green",
@@ -39,13 +38,11 @@ const App = () => {
     const response = await axios.get(
       "https://pokeapi.co/api/v2/pokemon?limit=151"
     );
-    console.log(response.data.results)
     setPokemon(response.data.results);
   };
 
-
-// Auth:
-const [token, setToken] = useState(localStorage.getItem('token'))
+  // Auth:
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   function handleLogin(newToken) {
     setToken(newToken);
@@ -80,11 +77,11 @@ const [token, setToken] = useState(localStorage.getItem('token'))
           path="/pokewiki/pokemons"
           element={<PokemonList pokemon={pokemon} typeColors={typeColors} />}
         />
-        <Route 
-        
-          path="pokewiki/pokeTeam" 
-          element={<PokemonTeamForm setPokemon ={setPokemon} pokemon={pokemon} />}
-        
+        <Route
+          path="pokewiki/pokeTeam"
+          element={
+            <PokemonTeamForm setPokemon={setPokemon} pokemon={pokemon} />
+          }
         />
         <Route
           path="/pokewiki/pokemons/:pokeName"

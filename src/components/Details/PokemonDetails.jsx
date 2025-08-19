@@ -15,12 +15,15 @@ const PokemonDetails = ({ typeColors }) => {
       `https://pokeapi.co/api/v2/pokemon/${params.pokeName}`
     );
     // sorting moves by level
+
+    // filter moves to only level up method
     let filteredMoves = response.data.moves.sort((a, b) => {
       return (
         a.version_group_details[0].level_learned_at -
         b.version_group_details[0].level_learned_at
       );
     });
+
     setMoves(filteredMoves);
     setThisPokemon(response.data);
     getMovesDetails(filteredMoves);
@@ -47,7 +50,7 @@ const PokemonDetails = ({ typeColors }) => {
           className="pokemon-card"
           style={{ borderColor: typeColors[thisPokemon.types[0].type.name] }}
         >
-          <h1>{params.pokeName}</h1>
+          <h1 className="poke-name-title">{params.pokeName}</h1>
           <div className="poke-header">
             <img
               className="poke-img"
@@ -58,6 +61,7 @@ const PokemonDetails = ({ typeColors }) => {
             <div>
               <div className="pokedex-data">
                 <h2
+                  className="poke-details-title"
                   style={{
                     borderColor: typeColors[thisPokemon.types[0].type.name],
                   }}
@@ -67,6 +71,7 @@ const PokemonDetails = ({ typeColors }) => {
                 <ul>
                   <li>Pokedex no. {thisPokemon.id}</li>
                   <hr
+                    className="poke-details-hr"
                     style={{
                       borderColor: typeColors[thisPokemon.types[0].type.name],
                     }}
@@ -88,24 +93,28 @@ const PokemonDetails = ({ typeColors }) => {
                     </div>
                   </div>
                   <hr
+                    className="poke-details-hr"
                     style={{
                       borderColor: typeColors[thisPokemon.types[0].type.name],
                     }}
                   />
                   <li>Height: {thisPokemon.height} cm</li>
                   <hr
+                    className="poke-details-hr"
                     style={{
                       borderColor: typeColors[thisPokemon.types[0].type.name],
                     }}
                   />
                   <li>Weight: {thisPokemon.weight}00 grams</li>
                   <hr
+                    className="poke-details-hr"
                     style={{
                       borderColor: typeColors[thisPokemon.types[0].type.name],
                     }}
                   />
                   <li>Abilities: {thisPokemon.abilities[0].ability.name}</li>
                   <hr
+                    className="poke-details-hr"
                     style={{
                       borderColor: typeColors[thisPokemon.types[0].type.name],
                     }}
@@ -118,6 +127,7 @@ const PokemonDetails = ({ typeColors }) => {
           <div className="poke-info">
             <div className="base-stats">
               <h2
+                className="poke-details-title"
                 style={{
                   borderColor: typeColors[thisPokemon.types[0].type.name],
                 }}
@@ -127,36 +137,42 @@ const PokemonDetails = ({ typeColors }) => {
               <ul>
                 <li>HP: {thisPokemon.stats[0].base_stat}</li>
                 <hr
+                  className="poke-details-hr"
                   style={{
                     borderColor: typeColors[thisPokemon.types[0].type.name],
                   }}
                 />
                 <li>Attack: {thisPokemon.stats[1].base_stat}</li>
                 <hr
+                  className="poke-details-hr"
                   style={{
                     borderColor: typeColors[thisPokemon.types[0].type.name],
                   }}
                 />
                 <li>Defense: {thisPokemon.stats[2].base_stat}</li>
                 <hr
+                  className="poke-details-hr"
                   style={{
                     borderColor: typeColors[thisPokemon.types[0].type.name],
                   }}
                 />
                 <li>Sp. Atk: {thisPokemon.stats[3].base_stat}</li>
                 <hr
+                  className="poke-details-hr"
                   style={{
                     borderColor: typeColors[thisPokemon.types[0].type.name],
                   }}
                 />
                 <li>Sp. Def: {thisPokemon.stats[4].base_stat}</li>
                 <hr
+                  className="poke-details-hr"
                   style={{
                     borderColor: typeColors[thisPokemon.types[0].type.name],
                   }}
                 />
                 <li>Speed: {thisPokemon.stats[5].base_stat}</li>
                 <hr
+                  className="poke-details-hr"
                   style={{
                     borderColor: typeColors[thisPokemon.types[0].type.name],
                   }}
@@ -165,6 +181,7 @@ const PokemonDetails = ({ typeColors }) => {
             </div>
             <div className="moves">
               <h2
+                className="poke-details-title"
                 style={{
                   borderColor: typeColors[thisPokemon.types[0].type.name],
                 }}
@@ -174,16 +191,27 @@ const PokemonDetails = ({ typeColors }) => {
               <ul>
                 {moves.map((element) => {
                   return element.version_group_details[0].move_learn_method
-                    .name === "level-up" ? (
-                    <li key={element.move.name}>
-                      {element.move.name} learned at level{" "}
-                      {element.version_group_details[0].level_learned_at}
-                    </li>
-                  ) : null;
+                    .name === "level-up"
+                    ? movesDetails.map((levelUpMoveset) => {
+                        return element.move.name ===
+                          levelUpMoveset.data.name ? (
+                          <p>{element.name}</p>
+                        ) : null;
+                      })
+                    : // <li key={element.move.name}>
+                      //   {element.move.name} learned at level{" "}
+                      //   {element.version_group_details[0].level_learned_at}
+                      // </li>
+                      null;
                 })}
               </ul>
             </div>
-            {/* {console.log("details moves:", movesDetails[0].data)} */}
+            {console.log(
+              "details moves:",
+              movesDetails[0].data.name,
+              " ",
+              moves[0].move.name
+            )}
           </div>
         </div>
       ) : (

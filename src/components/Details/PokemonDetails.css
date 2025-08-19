@@ -1,7 +1,6 @@
 /* general tags css */
 body {
   font-family: Arial, sans-serif;
-  /* background-image: url("https://images.wallpapersden.com/image/download/pokemon-pikachu-art_a25tbW6UmZqaraWkpJRmbmdlrWZlbWU.jpg"); https://i.imgur.com/O7ZWigt.png */
   background-color: rgb(12, 12, 101);
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,14 +9,14 @@ body {
   align-items: center;
 }
 
-h1 {
+.poke-name-title {
   text-transform: capitalize;
   text-align: center;
   margin-top: 20px;
   color: black;
 }
 
-h2 {
+.poke-details-title {
   margin-bottom: 10px;
   border-bottom: 2px solid rgb(170, 24, 24);
   padding-bottom: 5px;
@@ -36,7 +35,7 @@ li {
   color: black;
 }
 
-hr {
+.poke-details-hr {
   border: none;
   border-bottom: 1px solid;
 }
