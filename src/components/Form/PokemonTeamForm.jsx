@@ -9,42 +9,46 @@ const [isSubmitting, setIsSubmitting] = useState(false)
 
 
 // form Data: 
-const [pokeTeam, setPokeTeam] = useState({
-pokemon1:'',
-pokemon2:'',
-pokemon3:'',
-pokemon4:'',
-pokemon5:'',
-pokemon6:''
-
-})
+const [pokeTeam, setPokeTeam] = useState([{}])
+const [newPokeTeam, setNewPokeTeam] = useState({})
 
 
-const handleSubmit = async (event) => {
-    setPokeTeam({...pokeTeam, [event.target.name]: event.target.value})
-    const response = await create(pokeTeam)
+const handleChange = (event) => {
+    
+    setNewPokeTeam({...newPokeTeam, [event.target.name]: event.target.value})
+    console.log(newPokeTeam)
+}
+
+
+const handleSubmit = (event) => {
+    event.preventDefault()
+    setPokeTeam([...pokeTeam, newPokeTeam])
+    console.log('current poke team: ', pokeTeam)
 
 }
+
+
 
 return(
     <>
     <h1>Make a Pokemon Team</h1>
     <p>Pokemons Available</p>
-    <form >
-    <label htmlFor="name">Pokemon 1</label>
-    <select
-        name="pokemon"
-        id="pokemon"
+
+    <form onSubmit={handleSubmit}>
+    <label htmlFor="pokemon1">Pokemon 1</label>
+    <select onChange={handleChange}
+        name="pokemon1"
+        id="pokemon1"
     >
 
     {pokemon.map((onePoke) => (
         <option multiple value={onePoke.name}>{onePoke.name}</option>
     ))}
     </select>
-    <label htmlFor="name">Pokemon 2</label>
-    <select
-        name="pokemon"
-        id="pokemon"
+    <label htmlFor="pokemon2">Pokemon 2</label>
+    <select onChange={handleChange}
+        name="pokemon2"
+        id="pokemon2"
     >
    
     {pokemon.map((onePoke) => (
@@ -52,10 +56,10 @@ return(
     ))}
     </select>
     <br />
-    <label htmlFor="name">Pokemon 3</label>
-    <select
-        name="pokemon"
-        id="pokemon"
+    <label htmlFor="pokemon3">Pokemon 3</label>
+    <select onChange={handleChange}
+        name="pokemon3"
+        id="pokemon3"
     >
 
     {pokemon.map((onePoke) => (
@@ -64,10 +68,10 @@ return(
     </select>
     <br />
     
-    <label htmlFor="name">Pokemon 4</label>
-    <select
-        name="pokemon"
-        id="pokemon"
+    <label htmlFor="pokemon4">Pokemon 4</label>
+    <select onChange={handleChange}
+        name="pokemon4"
+        id="pokemon4"
     >
 
     {pokemon.map((onePoke) => (
@@ -76,10 +80,10 @@ return(
     </select>
     <br />
 
-    <label htmlFor="name">Pokemon 5</label>
-    <select
-        name="pokemon"
-        id="pokemon"
+    <label htmlFor="pokemon5">Pokemon 5</label>
+    <select onChange={handleChange}
+        name="pokemon5"
+        id="pokemon5"
     >
 
     {pokemon.map((onePoke) => (
@@ -87,10 +91,10 @@ return(
     ))}
     </select>
     <br />
-    <label htmlFor="name">Pokemon 6</label>
-    <select
-        name="pokemon"
-        id="pokemon"
+    <label htmlFor="pokemon6">Pokemon 6</label>
+    <select onChange={handleChange}
+        name="pokemon6"
+        id="pokemon6"
     >
 
     {pokemon.map((onePoke) => (
@@ -99,7 +103,7 @@ return(
     </select>
 
       
-    <button onClick={handleSubmit}> Submit your team </button>
+    <button type="submit"> Submit your team </button>
       </form>
     </>
 )
