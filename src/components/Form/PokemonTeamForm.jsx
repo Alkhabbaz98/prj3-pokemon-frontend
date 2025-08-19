@@ -1,26 +1,40 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
-import "./PokemonTeamForm.css";
+import { useState } from "react"
+import { useNavigate } from "react-router"
+import axios from "axios"
+import { createTeam } from "../../../lib/api";
+
 
 const PokemonTeamForm = ({ pokemon }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // form Data:
-  const [pokeTeam, setPokeTeam] = useState([{}]);
-  const [newPokeTeam, setNewPokeTeam] = useState({});
+// form Data: 
+const [pokeTeam, setPokeTeam] = useState([])
+const [newPokeTeam, setNewPokeTeam] = useState({})
+
 
   const handleChange = (event) => {
     setNewPokeTeam({ ...newPokeTeam, [event.target.name]: event.target.value });
     console.log(newPokeTeam);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setPokeTeam([...pokeTeam, newPokeTeam]);
-    console.log("current poke team: ", pokeTeam);
-  };
+const handleSubmit = async (event) => {
+    event.preventDefault()
+    if(isSubmitting) return 
+    setIsSubmitting(true)
+    
+    setPokeTeam([...pokeTeam, newPokeTeam])
+    console.log('current poke team: ', pokeTeam)
+    
+    const response = await createTeam(newPokeTeam)
+    if (response.status === 201) {
+        setIsSubmitting(false)
+    }
 
-  return (
+}
+
+
+
+return(
     <>
       <h1 className="new-team-title">Create A New Pokemon Team</h1>
       <div className="new-team-card">
