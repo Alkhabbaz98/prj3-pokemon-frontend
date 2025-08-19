@@ -1,9 +1,10 @@
 import { Link } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ClipLoader } from "react-spinners";
 import "./PokemonList.css";
 
-const PokemonList = ({ pokemon }) => {
+const PokemonList = ({ pokemon, typeColors }) => {
   const [list, setList] = useState([]);
 
   const getPokemonList = async () => {
@@ -14,7 +15,6 @@ const PokemonList = ({ pokemon }) => {
       })
     );
     setList(details);
-    console.log("details", details[0]);
   };
 
   useEffect(() => {
@@ -24,19 +24,39 @@ const PokemonList = ({ pokemon }) => {
   return (
     <>
       <h1>Generation 1 Pokemon</h1>
-      <div className="poke-container">
-        {pokemon.map((onePoke, index) => (
-          <Link to={`/pokewiki/pokemons/${onePoke.name}`}>
-            <div className="poke-elem" key={onePoke.name}>
-              <img
-                className="elem-img"
-                src={list[index]?.sprites?.other["home"]?.front_default}
-              />
-              {onePoke.name}
-            </div>
-          </Link>
-        ))}
-      </div>
+      {list ? (
+        <div className="poke-container">
+          {pokemon.map((onePoke, index) => (
+            <Link to={`/pokewiki/pokemons/${onePoke.name}`}>
+              <div className="poke-elem" key={onePoke.name}>
+                <img
+                  className="elem-img"
+                  src={list[index]?.sprites?.other["home"]?.front_default}
+                />
+                <p>#{list[index]?.id}</p>
+                <p>{onePoke.name}</p>
+                <div className="type-container" key={`${onePoke.name}`}>
+                  {list[index]?.types?.map((oneType) => {
+                    return (
+                      <span
+                        key={oneType.type.name}
+                        className="type-elem"
+                        style={{
+                          backgroundColor: typeColors[oneType.type.name],
+                        }}
+                      >
+                        {oneType.type.name}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <ClipLoader color="red" />
+      )}
     </>
   );
 };
