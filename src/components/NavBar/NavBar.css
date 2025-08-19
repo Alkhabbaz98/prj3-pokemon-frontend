@@ -41,6 +41,7 @@
 
 .nav-link:hover {
   color: gold;
+  cursor: pointer;
 }
 
 body {

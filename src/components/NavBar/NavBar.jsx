@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import "./NavBar.css";
+import "../LogoutButton/LogoutButton";
+import LogoutButton from "../LogoutButton/LogoutButton";
 
 const NavBar = () => {
   return (
@@ -22,6 +24,7 @@ const NavBar = () => {
         <Link to="/pokewiki/pokemons" className="nav-link">
           Pokemon List
         </Link>
+        <LogoutButton></LogoutButton>
       </div>
     </nav>
   );
