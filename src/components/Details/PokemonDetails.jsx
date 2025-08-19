@@ -220,6 +220,7 @@ const PokemonDetails = ({ typeColors }) => {
                 })}
               </ul>
             </div>
+            {/* console for details */}
             {/* {console.log(
               "details moves:",
               movesDetails[0].data.name,
