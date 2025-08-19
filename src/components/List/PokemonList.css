@@ -23,7 +23,9 @@
   text-transform: capitalize;
   width: 150px;
 }
-
+p {
+  margin: 10px;
+}
 /* Pokemon img */
 .elem-img {
   width: 100px;
