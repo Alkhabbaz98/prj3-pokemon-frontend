@@ -33,8 +33,8 @@ const PokemonList = ({ pokemon, typeColors }) => {
                   className="elem-img"
                   src={list[index]?.sprites?.other["home"]?.front_default}
                 />
-                <p>#{list[index]?.id}</p>
-                <p>{onePoke.name}</p>
+                <p className="poke-mini-details">#{list[index]?.id}</p>
+                <p className="poke-mini-details">{onePoke.name}</p>
                 <div className="type-container" key={`${onePoke.name}`}>
                   {list[index]?.types?.map((oneType) => {
                     return (

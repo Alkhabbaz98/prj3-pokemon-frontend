@@ -30,8 +30,8 @@ function LoginForm({ onLogin }) {
     <div className="form-container">
       <div className="stripe"></div>
       <div className="circle"></div>
-      <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2 className="login">Login</h2>
         <input
           placeholder="Username"
           value={username}

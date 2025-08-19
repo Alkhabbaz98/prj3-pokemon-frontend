@@ -28,8 +28,8 @@ function SignUp() {
     <div className="form-container">
       <div className="stripe"></div>
       <div className="circle"></div>
-      <form onSubmit={handleSubmit}>
-        <h2>Sign Up</h2>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2 className="login">Sign Up</h2>
         <input
           placeholder="Username"
           value={username}

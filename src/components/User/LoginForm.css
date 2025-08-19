@@ -1,12 +1,12 @@
 /* Main form css */
-form {
+.login-form {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
   text-align: center;
 }
-h2 {
+.login {
   border-bottom: none;
   margin-bottom: 175px;
   font-size: 50px;
