@@ -9,6 +9,10 @@ const NavBar = () => {
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuLvq_z6fGcatFZVwO9KBw03rgVetQA-p9Q&s" />{" "}
           PokeWiki
         </p>
+        <Link></Link>
+        <Link to="pokewiki/poketeam" className="nav-link">
+          Team
+        </Link>
         <Link to="user/login" className="nav-link">
           Log in
         </Link>
