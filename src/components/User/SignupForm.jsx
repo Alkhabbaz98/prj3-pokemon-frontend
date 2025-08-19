@@ -31,17 +31,21 @@ function SignUp() {
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login">Sign Up</h2>
         <input
+          className="login-input"
           placeholder="Username"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
         />
         <input
+          className="login-input"
           placeholder="Password"
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button type="submit">Sign Up</button>
+        <button className="login-button" type="submit">
+          Sign Up
+        </button>
       </form>
     </div>
   );

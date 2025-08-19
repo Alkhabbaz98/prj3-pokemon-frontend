@@ -25,16 +25,30 @@ const PokemonTeamForm = ({ pokemon }) => {
       <h1 className="new-team-title">Create A New Pokemon Team</h1>
       <div className="new-team-card">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="pokemon1">Pokemon 1</label>
-          <select onChange={handleChange} name="pokemon1" id="pokemon1">
+          <label className="team-form-label" htmlFor="pokemon1">
+            Pokemon 1
+          </label>
+          <select
+            className="team-form-select"
+            onChange={handleChange}
+            name="pokemon1"
+            id="pokemon1"
+          >
             {pokemon.map((onePoke) => (
               <option multiple value={onePoke.name}>
                 {onePoke.name}
               </option>
             ))}
           </select>
-          <label htmlFor="pokemon2">Pokemon 2</label>
-          <select onChange={handleChange} name="pokemon2" id="pokemon2">
+          <label className="team-form-label" htmlFor="pokemon2">
+            Pokemon 2
+          </label>
+          <select
+            className="team-form-select"
+            onChange={handleChange}
+            name="pokemon2"
+            id="pokemon2"
+          >
             {pokemon.map((onePoke) => (
               <option multiple value={onePoke.name}>
                 {onePoke.name}
@@ -42,8 +56,15 @@ const PokemonTeamForm = ({ pokemon }) => {
             ))}
           </select>
           <br />
-          <label htmlFor="pokemon3">Pokemon 3</label>
-          <select onChange={handleChange} name="pokemon3" id="pokemon3">
+          <label className="team-form-label" htmlFor="pokemon3">
+            Pokemon 3
+          </label>
+          <select
+            className="team-form-select"
+            onChange={handleChange}
+            name="pokemon3"
+            id="pokemon3"
+          >
             {pokemon.map((onePoke) => (
               <option multiple value={onePoke.name}>
                 {onePoke.name}
@@ -52,8 +73,15 @@ const PokemonTeamForm = ({ pokemon }) => {
           </select>
           <br />
 
-          <label htmlFor="pokemon4">Pokemon 4</label>
-          <select onChange={handleChange} name="pokemon4" id="pokemon4">
+          <label className="team-form-label" htmlFor="pokemon4">
+            Pokemon 4
+          </label>
+          <select
+            className="team-form-select"
+            onChange={handleChange}
+            name="pokemon4"
+            id="pokemon4"
+          >
             {pokemon.map((onePoke) => (
               <option multiple value={onePoke.name}>
                 {onePoke.name}
@@ -62,8 +90,15 @@ const PokemonTeamForm = ({ pokemon }) => {
           </select>
           <br />
 
-          <label htmlFor="pokemon5">Pokemon 5</label>
-          <select onChange={handleChange} name="pokemon5" id="pokemon5">
+          <label className="team-form-label" htmlFor="pokemon5">
+            Pokemon 5
+          </label>
+          <select
+            className="team-form-select"
+            onChange={handleChange}
+            name="pokemon5"
+            id="pokemon5"
+          >
             {pokemon.map((onePoke) => (
               <option multiple value={onePoke.name}>
                 {onePoke.name}
@@ -71,8 +106,15 @@ const PokemonTeamForm = ({ pokemon }) => {
             ))}
           </select>
           <br />
-          <label htmlFor="pokemon6">Pokemon 6</label>
-          <select onChange={handleChange} name="pokemon6" id="pokemon6">
+          <label className="team-form-label" htmlFor="pokemon6">
+            Pokemon 6
+          </label>
+          <select
+            className="team-form-select"
+            onChange={handleChange}
+            name="pokemon6"
+            id="pokemon6"
+          >
             {pokemon.map((onePoke) => (
               <option multiple value={onePoke.name}>
                 {onePoke.name}
