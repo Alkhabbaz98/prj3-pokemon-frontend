@@ -1,0 +1,50 @@
+.title {
+  color: white;
+}
+
+/* Pokemon list card */
+.poke-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+  border: 3px solid;
+  border-radius: 16px;
+  gap: 25px;
+  padding: 50px;
+  margin: 20px auto;
+  max-width: 1150px;
+}
+
+/* Each pokemon card */
+.poke-elem {
+  border: 2px solid black;
+  text-align: center;
+  text-transform: capitalize;
+  width: 150px;
+}
+p {
+  margin: 10px;
+}
+/* Pokemon img */
+.elem-img {
+  width: 100px;
+  height: 100px;
+}
+
+/* Types container */
+.type-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.type-elem {
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+}

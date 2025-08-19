@@ -1,0 +1,49 @@
+.navbar {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: red;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: gold;
+}
+
+body {
+  margin: 0;
+  padding-top: 60px;
+}
