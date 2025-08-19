@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router"
+import axios from "axios"
+import { createTeam } from "../../../lib/api";
 
 
 const PokemonTeamForm = ({pokemon}) => {
@@ -9,7 +11,7 @@ const [isSubmitting, setIsSubmitting] = useState(false)
 
 
 // form Data: 
-const [pokeTeam, setPokeTeam] = useState([{}])
+const [pokeTeam, setPokeTeam] = useState([])
 const [newPokeTeam, setNewPokeTeam] = useState({})
 
 
@@ -20,10 +22,18 @@ const handleChange = (event) => {
 }
 
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
     event.preventDefault()
+    if(isSubmitting) return 
+    setIsSubmitting(true)
+    
     setPokeTeam([...pokeTeam, newPokeTeam])
     console.log('current poke team: ', pokeTeam)
+    
+    const response = await createTeam(newPokeTeam)
+    if (response.status === 201) {
+        setIsSubmitting(false)
+    }
 
 }
 
