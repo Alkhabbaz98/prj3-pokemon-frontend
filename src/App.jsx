@@ -11,7 +11,7 @@ import LoginForm from "./components/User/LoginForm";
 import SignUp from "./components/User/SignupForm";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import LogoutButton from "./components/LogoutButton/LogoutButton";
-
+import PokemonTeamForm from "./components/Form/PokemonTeamForm";
 
 
 const App = () => {
@@ -20,8 +20,10 @@ const App = () => {
     const response = await axios.get(
       "https://pokeapi.co/api/v2/pokemon?limit=151"
     );
+    console.log(response.data.results)
     setPokemon(response.data.results);
   };
+
 
 // Auth:
 const [token, setToken] = useState(localStorage.getItem('token'))
@@ -64,6 +66,12 @@ if (token) {
         <Route
           path="/pokewiki/pokemons"
           element={<PokemonList pokemon={pokemon} />}
+        />
+        <Route 
+        
+          path="pokewiki/pokeTeam" 
+          element={<PokemonTeamForm setPokemon ={setPokemon} pokemon={pokemon} />}
+        
         />
         <Route
           path="/pokewiki/pokemons/:pokeName"
