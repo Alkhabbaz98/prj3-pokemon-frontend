@@ -1,7 +1,8 @@
 /* general tags css */
 body {
   font-family: Arial, sans-serif;
-  background-image: url("https://st2.depositphotos.com/7507618/12045/v/450/depositphotos_120454410-stock-illustration-pokeball-seamless-pattern.jpg"); /* https://i.imgur.com/O7ZWigt.png */
+  /* background-image: url("https://images.wallpapersden.com/image/download/pokemon-pikachu-art_a25tbW6UmZqaraWkpJRmbmdlrWZlbWU.jpg"); https://i.imgur.com/O7ZWigt.png */
+  background-color: rgb(12, 12, 101);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -13,22 +14,26 @@ h1 {
   text-transform: capitalize;
   text-align: center;
   margin-top: 20px;
+  color: black;
 }
 
 h2 {
   margin-bottom: 10px;
   border-bottom: 2px solid rgb(170, 24, 24);
   padding-bottom: 5px;
+  color: black;
 }
 
 ul {
   list-style: none;
   padding: 0;
+  color: black;
 }
 
 li {
   padding: 6px 0;
   font-size: 14px;
+  color: black;
 }
 
 hr {
@@ -41,7 +46,7 @@ hr {
   background-color: white;
   border: 3px solid;
   border-radius: 16px;
-  padding: 175px;
+  padding: 125px;
   margin: 20px auto;
   max-width: 1100px;
 }
@@ -61,7 +66,6 @@ hr {
 /* Types section in pokedex data */
 .type-row {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 8px;
   margin: 10px 0;

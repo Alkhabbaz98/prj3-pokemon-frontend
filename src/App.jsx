@@ -17,16 +17,20 @@ const App = () => {
     fire: "red",
     water: "blue",
     poison: "purple",
-    electric: "yellow",
+    electric: "gold",
     bug: "olive",
     normal: " gray",
     flying: "skyblue",
     psychic: "pink",
-    dark: "darkpurple",
-    ground: "brown",
+    dark: "purple",
+    ground: "tan",
     ice: "lightblue",
     rock: "orange",
     dragon: "indigo",
+    fairy: "Magenta",
+    fighting: "darkred",
+    ghost: "darkviolet",
+    steel: "silver",
   };
   const [pokemon, setPokemon] = useState([{}]);
   const getPokemon = async () => {
@@ -70,7 +74,7 @@ const App = () => {
         <Route path="/user/signup" element={<SignUp />} />
         <Route
           path="/pokewiki/pokemons"
-          element={<PokemonList pokemon={pokemon} />}
+          element={<PokemonList pokemon={pokemon} typeColors={typeColors} />}
         />
         <Route
           path="/pokewiki/pokemons/:pokeName"
