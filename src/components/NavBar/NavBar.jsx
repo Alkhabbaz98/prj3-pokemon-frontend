@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import "./NavBar.css";
+import "../LogoutButton/LogoutButton";
+import LogoutButton from "../LogoutButton/LogoutButton";
 
 const NavBar = () => {
   return (
@@ -9,6 +11,10 @@ const NavBar = () => {
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuLvq_z6fGcatFZVwO9KBw03rgVetQA-p9Q&s" />{" "}
           PokeWiki
         </p>
+        <Link></Link>
+        <Link to="pokewiki/poketeam" className="nav-link">
+          Team
+        </Link>
         <Link to="user/login" className="nav-link">
           Log in
         </Link>
@@ -18,6 +24,7 @@ const NavBar = () => {
         <Link to="/pokewiki/pokemons" className="nav-link">
           Pokemon List
         </Link>
+        <LogoutButton></LogoutButton>
       </div>
     </nav>
   );

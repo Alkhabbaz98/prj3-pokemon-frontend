@@ -23,13 +23,13 @@ body {
   color: black;
 }
 
-ul {
+.poke-details-ul {
   list-style: none;
   padding: 0;
   color: black;
 }
 
-li {
+.poke-details-li {
   padding: 6px 0;
   font-size: 14px;
   color: black;
