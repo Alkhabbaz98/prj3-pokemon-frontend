@@ -3,8 +3,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { showTeam, deleteTeam } from "../../../lib/api";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router";
+import "./PokemonTeamHomepage.css";
 
 const PokemonTeamHomepage = ({}) => {
+  const navigate = useNavigate();
   const [teams, setTeams] = useState([]);
 
   const getAllTeams = async () => {
@@ -25,31 +28,43 @@ const PokemonTeamHomepage = ({}) => {
   useEffect(() => {
     getAllTeams();
   }, []);
-  console.log(teams);
   return (
     <>
       {teams.length ? (
-        <>
-          <h1>{teams[0].user?.username}'s Pokemon Teams</h1>
-          {teams.map((element, index) => {
-            return (
-              <div key={element._id}>
-                <h1>Teams {index + 1}:</h1>
-                <p>{element.pokemon1}</p>
-                <p>{element.pokemon2}</p>
-                <p>{element.pokemon3}</p>
-                <p>{element.pokemon4}</p>
-                <p>{element.pokemon5}</p>
-                <p>{element.pokemon6}</p>
-                <button>Edit</button>
-                <button onClick={() => handleDelete(element._id)}>
-                  Delete
-                </button>
-                <br />
-              </div>
-            );
-          })}
-        </>
+        <div className="myteam-page">
+          <h1 className="myteam-list-header">
+            {teams[0].user?.username}'s Pokemon Teams
+          </h1>
+          <div className="myteam-list">
+            {teams.map((element, index) => {
+              return (
+                <div key={element._id} className="myteam-card">
+                  <h2 className="myteam-card-title">Teams {index + 1}:</h2>
+                  <ul className="myteam-list-members">
+                    <li>{element.pokemon1}</li>
+                    <li>{element.pokemon2}</li>
+                    <li>{element.pokemon3}</li>
+                    <li>{element.pokemon4}</li>
+                    <li>{element.pokemon5}</li>
+                    <li>{element.pokemon6}</li>
+                  </ul>
+                  <div className="myteam-buttons">
+                    <button
+                      onClick={() =>
+                        navigate(`/pokewiki/poketeam${element._id}/update`)
+                      }
+                    >
+                      Edit
+                    </button>
+                    <button onClick={() => handleDelete(element._id)}>
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       ) : (
         <h2>You don't have any teams yet.</h2>
       )}

@@ -81,7 +81,6 @@ const PokemonTeamForm = ({ pokemon }) => {
                     }
                   />
                   <br />
-                  
                 </div>
               ) : null}
             </div>

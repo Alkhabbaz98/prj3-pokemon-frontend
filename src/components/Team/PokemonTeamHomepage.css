@@ -1,0 +1,63 @@
+.myteam-list-header {
+  font-size: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+.myteam-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.myteam-card {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+}
+
+.myteam-list-members {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+.myteam-list-members li {
+  font-size: 20px;
+  margin: 5px;
+  text-transform: capitalize;
+}
+
+.myteam-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.myteam-buttons button {
+  width: 120px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.myteam-buttons button:first-child {
+  background: rgb(43, 43, 231);
+  color: white;
+}
+
+.myteam-buttons button:last-child {
+  background: red;
+  color: white;
+}
+
+.myteam-buttons button:hover {
+  opacity: 0.9;
+}
