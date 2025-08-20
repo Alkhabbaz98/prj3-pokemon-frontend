@@ -19,7 +19,7 @@ function LoginForm({ onLogin }) {
       });
       localStorage.setItem("token", res.data.token);
       onLogin(res.data.token);
-      navigate("/pokewiki");
+      navigate("/pokewiki/poketeam");
     } catch (err) {
       console.log(err);
       alert(err.response?.data?.message || "Login failed");
