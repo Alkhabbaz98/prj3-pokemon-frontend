@@ -6,11 +6,11 @@ import LogoutButton from "../LogoutButton/LogoutButton";
 const NavBar = ({ token, onLogout }) => {
   return (
     <nav className="navbar">
-      <div className="navbar-container">
         <p className="logo">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuLvq_z6fGcatFZVwO9KBw03rgVetQA-p9Q&s" />{" "}
           PokeWiki
         </p>
+        <div className="navbar-container">
         {token ? (
           <>
             <Link to="/pokewiki/poketeam" className="nav-link">
