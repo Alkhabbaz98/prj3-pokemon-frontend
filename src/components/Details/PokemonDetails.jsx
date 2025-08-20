@@ -211,7 +211,6 @@ const PokemonDetails = ({ typeColors }) => {
               <ul className="poke-details-ul">
                 {moves.map((element) => {
                   return element.version_group_details[0].move_learn_method
-
                     .name === "level-up" ? (
                     <li className="poke-details-li" key={element.move.name}>
                       {element.move.name} learned at level{" "}
@@ -221,14 +220,6 @@ const PokemonDetails = ({ typeColors }) => {
                 })}
               </ul>
             </div>
-            {/* console for details */}
-            {/* {console.log(
-
-              "details moves:",
-              movesDetails[0].data.name,
-              " ",
-              moves[0].move.name
-            )} */}
           </div>
         </div>
       ) : (

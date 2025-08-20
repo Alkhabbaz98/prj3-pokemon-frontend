@@ -66,8 +66,7 @@ const App = () => {
 
   return (
     <Router>
-      <NavBar />
-      <>{token ? <LogoutButton onLogout={handleLogout} /> : null}</>
+      <NavBar token={token} onLogout={handleLogout} />
       <Routes>
         <Route
           path="/user/login"

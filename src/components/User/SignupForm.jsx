@@ -18,7 +18,7 @@ function SignUp() {
         password,
       });
       alert("User registered, please login");
-      navigate("/login");
+      navigate("/user/login");
     } catch (err) {
       alert(err.response?.data?.message || "Registration failed");
     }
