@@ -79,24 +79,6 @@ const PokemonTeamForm = ({ pokemon }) => {
                     }
                   />
                   <br />
-                  <label className="team-form-label">Moveset:</label>
-                  <br />
-                  {[0, 1, 2, 3].map((i) => (
-                    <select
-                      className="team-form-move-select"
-                      key={i}
-                      name={`${pokeTeamMember}_move${i + 1}`}
-                    >
-                      {selectedPoke[pokeTeamMember].moves.map((element) => (
-                        <option
-                          key={element.move.name}
-                          value={element.move.name}
-                        >
-                          {element.move.name}
-                        </option>
-                      ))}
-                    </select>
-                  ))}
                 </div>
               ) : null}
             </div>
