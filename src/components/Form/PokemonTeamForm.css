@@ -20,6 +20,7 @@
   margin-bottom: 5px;
   display: inline;
   font-size: 35px;
+  text-transform: capitalize;
 }
 
 .team-form-select {

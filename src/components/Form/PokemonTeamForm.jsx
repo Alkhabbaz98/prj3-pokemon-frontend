@@ -1,140 +1,103 @@
-import { useState } from "react"
-import { useNavigate } from "react-router"
-import axios from "axios"
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
 import { createTeam } from "../../../lib/api";
-
+import "./PokemonTeamForm.css";
 
 const PokemonTeamForm = ({ pokemon }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-// form Data: 
-const [pokeTeam, setPokeTeam] = useState([])
-const [newPokeTeam, setNewPokeTeam] = useState({})
+  // form Data:
+  const [pokeTeam, setPokeTeam] = useState([]);
+  const [newPokeTeam, setNewPokeTeam] = useState({});
+  const [selectedPoke, setSelectedPoke] = useState({});
 
-
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     setNewPokeTeam({ ...newPokeTeam, [event.target.name]: event.target.value });
-    console.log(newPokeTeam);
+    const url = pokemon.find(
+      (onePoke) => onePoke.name === event.target.value
+    ).url;
+    const response = await axios.get(url);
+    setSelectedPoke((element) => ({
+      ...element,
+      [event.target.name]: response.data,
+    }));
   };
 
-const handleSubmit = async (event) => {
-    event.preventDefault()
-    if(isSubmitting) return 
-    setIsSubmitting(true)
-    
-    setPokeTeam([...pokeTeam, newPokeTeam])
-    console.log('current poke team: ', pokeTeam)
-    
-    const response = await createTeam(newPokeTeam)
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    setPokeTeam([...pokeTeam, newPokeTeam]);
+    console.log("current poke team: ", pokeTeam);
+
+    const response = await createTeam(newPokeTeam);
     if (response.status === 201) {
-        setIsSubmitting(false)
+      setIsSubmitting(false);
     }
+  };
 
-}
-
-
-
-return(
+  return (
     <>
       <h1 className="new-team-title">Create A New Pokemon Team</h1>
       <div className="new-team-card">
         <form onSubmit={handleSubmit}>
-          <label className="team-form-label" htmlFor="pokemon1">
-            Pokemon 1
-          </label>
-          <select
-            className="team-form-select"
-            onChange={handleChange}
-            name="pokemon1"
-            id="pokemon1"
-          >
-            {pokemon.map((onePoke) => (
-              <option multiple value={onePoke.name}>
-                {onePoke.name}
-              </option>
-            ))}
-          </select>
-          <label className="team-form-label" htmlFor="pokemon2">
-            Pokemon 2
-          </label>
-          <select
-            className="team-form-select"
-            onChange={handleChange}
-            name="pokemon2"
-            id="pokemon2"
-          >
-            {pokemon.map((onePoke) => (
-              <option multiple value={onePoke.name}>
-                {onePoke.name}
-              </option>
-            ))}
-          </select>
-          <br />
-          <label className="team-form-label" htmlFor="pokemon3">
-            Pokemon 3
-          </label>
-          <select
-            className="team-form-select"
-            onChange={handleChange}
-            name="pokemon3"
-            id="pokemon3"
-          >
-            {pokemon.map((onePoke) => (
-              <option multiple value={onePoke.name}>
-                {onePoke.name}
-              </option>
-            ))}
-          </select>
-          <br />
+          {[
+            "pokemon1",
+            "pokemon2",
+            "pokemon3",
+            "pokemon4",
+            "pokemon5",
+            "pokemon6",
+          ].map((pokeTeamMember) => (
+            <div key={pokeTeamMember}>
+              <label className="team-form-label" htmlFor={pokeTeamMember}>
+                {pokeTeamMember}
+              </label>
+              <select
+                className="team-form-select"
+                onChange={handleChange}
+                name={pokeTeamMember}
+                id={pokeTeamMember}
+              >
+                {pokemon.map((onePoke) => (
+                  <option key={onePoke.name} value={onePoke.name}>
+                    {onePoke.name}
+                  </option>
+                ))}
+              </select>
 
-          <label className="team-form-label" htmlFor="pokemon4">
-            Pokemon 4
-          </label>
-          <select
-            className="team-form-select"
-            onChange={handleChange}
-            name="pokemon4"
-            id="pokemon4"
-          >
-            {pokemon.map((onePoke) => (
-              <option multiple value={onePoke.name}>
-                {onePoke.name}
-              </option>
-            ))}
-          </select>
-          <br />
-
-          <label className="team-form-label" htmlFor="pokemon5">
-            Pokemon 5
-          </label>
-          <select
-            className="team-form-select"
-            onChange={handleChange}
-            name="pokemon5"
-            id="pokemon5"
-          >
-            {pokemon.map((onePoke) => (
-              <option multiple value={onePoke.name}>
-                {onePoke.name}
-              </option>
-            ))}
-          </select>
-          <br />
-          <label className="team-form-label" htmlFor="pokemon6">
-            Pokemon 6
-          </label>
-          <select
-            className="team-form-select"
-            onChange={handleChange}
-            name="pokemon6"
-            id="pokemon6"
-          >
-            {pokemon.map((onePoke) => (
-              <option multiple value={onePoke.name}>
-                {onePoke.name}
-              </option>
-            ))}
-          </select>
+              {selectedPoke[pokeTeamMember] ? (
+                <div>
+                  <img
+                    src={
+                      selectedPoke[pokeTeamMember].sprites.other[
+                        "official-artwork"
+                      ].front_default
+                    }
+                  />
+                  <h4>Moves:</h4>
+                  {[0, 1, 2, 3].map((i) => (
+                    <select
+                      className="team-form-select"
+                      key={i}
+                      name={`${pokeTeamMember}_move${i + 1}`}
+                    >
+                      {selectedPoke[pokeTeamMember].moves.map((element) => (
+                        <option
+                          key={element.move.name}
+                          value={element.move.name}
+                        >
+                          {element.move.name}
+                        </option>
+                      ))}
+                    </select>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ))}
 
           <button className="team-submit" type="submit">
             Submit your team
