@@ -71,16 +71,19 @@ const PokemonTeamForm = ({ pokemon }) => {
               {selectedPoke[pokeTeamMember] ? (
                 <div>
                   <img
+                    className="team-form-img"
                     src={
                       selectedPoke[pokeTeamMember].sprites.other[
                         "official-artwork"
                       ].front_default
                     }
                   />
-                  <h4>Moves:</h4>
+                  <br />
+                  <label className="team-form-label">Moveset:</label>
+                  <br />
                   {[0, 1, 2, 3].map((i) => (
                     <select
-                      className="team-form-select"
+                      className="team-form-move-select"
                       key={i}
                       name={`${pokeTeamMember}_move${i + 1}`}
                     >
