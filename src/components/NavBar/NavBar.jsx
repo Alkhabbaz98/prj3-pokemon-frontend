@@ -19,6 +19,9 @@ const NavBar = ({ token, onLogout }) => {
             <Link to="/pokewiki/poketeam/new" className="nav-link">
               New Team
             </Link>
+            <Link to="/pokewiki/pokemons" className="nav-link">
+              Pokemon List
+            </Link>
             <LogoutButton onLogout={onLogout}></LogoutButton>
           </>
         ) : (
@@ -31,10 +34,6 @@ const NavBar = ({ token, onLogout }) => {
             </Link>
           </>
         )}
-
-        <Link to="/pokewiki/pokemons" className="nav-link">
-          Pokemon List
-        </Link>
       </div>
     </nav>
   );
