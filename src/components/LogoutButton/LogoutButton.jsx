@@ -7,7 +7,7 @@ function LogoutButton({ onLogout }) {
     console.log("logged out success");
     localStorage.removeItem("token");
     onLogout();
-    navigate("/login");
+    navigate("/user/login");
   };
 
   return (
