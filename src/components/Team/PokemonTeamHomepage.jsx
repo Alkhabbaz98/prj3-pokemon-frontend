@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 
 
+
 const PokemonTeamHomepage = () => {
   const baseUrl = import.meta.env.VITE_BACK_END_SERVER_URL
   const [test, setTest] = useState([])
@@ -21,6 +22,7 @@ const PokemonTeamHomepage = () => {
       </Link>
     </div>
   );
+  return <div></div>;
 };
 
 export default PokemonTeamHomepage;
