@@ -1,19 +1,21 @@
 import { showTeamById, updateTeam } from "../../../lib/api";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import axios from "axios";
 const TeamEdit = ({ pokemon }) => {
   const params = useParams();
-  const [thisTeam, setThisTeam] = useState();
-  const [pokeTeam, setPokeTeam] = useState([]);
+  const navigate = useNavigate();
+  const [thisTeam, setThisTeam] = useState({});
   const [selectedPoke, setSelectedPoke] = useState({});
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = async (event) => {
     setThisTeam({ ...thisTeam, [event.target.name]: event.target.value });
+    if (!event.target.value) return;
     const url = pokemon.find(
       (onePoke) => onePoke.name === event.target.value
-    ).url;
+    )?.url;
     const response = await axios.get(url);
     setSelectedPoke((element) => ({
       ...element,
@@ -26,11 +28,8 @@ const TeamEdit = ({ pokemon }) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
 
-    setPokeTeam([...pokeTeam, thisTeam]);
-    console.log("added success, current poke team: ", pokeTeam);
-
     const response = await updateTeam(params.teamId, thisTeam);
-    if (response.status === 200) {
+    if (response?.status === 200) {
       setIsSubmitting(false);
     }
     navigate("/pokewiki/poketeam");
@@ -39,7 +38,27 @@ const TeamEdit = ({ pokemon }) => {
   const getThisTeam = async (id) => {
     const team = await showTeamById(id);
     setThisTeam(team);
-    console.log(team);
+    console.log("This team:", thisTeam);
+
+    [
+      "pokemon1",
+      "pokemon2",
+      "pokemon3",
+      "pokemon4",
+      "pokemon5",
+      "pokemon6",
+    ].map(async (pokeTeamMember) => {
+      const name = team[pokeTeamMember];
+      if (!name) return;
+      const url = pokemon.find((onePoke) => onePoke.name === name)?.url;
+      if (url) {
+        const response = await axios.get(url);
+        setSelectedPoke((prev) => ({
+          ...prev,
+          [pokeTeamMember]: response.data,
+        }));
+      }
+    });
   };
 
   useEffect(() => {
@@ -48,7 +67,7 @@ const TeamEdit = ({ pokemon }) => {
 
   return (
     <>
-      <h1 className="new-team-title">Create A New Pokemon Team</h1>
+      <h1 className="new-team-title">Edit Pokemon Team</h1>
       <div className="new-team-card">
         <form onSubmit={handleSubmit}>
           {[
@@ -70,6 +89,9 @@ const TeamEdit = ({ pokemon }) => {
                 id={pokeTeamMember}
                 value={thisTeam?.[pokeTeamMember] || ""}
               >
+                <option value="" disabled>
+                  - Choose a Pokemon -
+                </option>
                 {pokemon.map((onePoke) => (
                   <option key={onePoke.name} value={onePoke.name}>
                     {onePoke.name}
@@ -93,8 +115,12 @@ const TeamEdit = ({ pokemon }) => {
             </div>
           ))}
 
-          <button className="team-submit" type="submit">
-            Submit your team
+          <button
+            style={{ backgroundColor: "green" }}
+            className="team-submit"
+            type="submit"
+          >
+            Update
           </button>
         </form>
       </div>

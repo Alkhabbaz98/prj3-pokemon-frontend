@@ -63,13 +63,13 @@ const PokemonTeamForm = ({ pokemon }) => {
                 name={pokeTeamMember}
                 id={pokeTeamMember}
               >
+                <option value="">- Choose a Pokemon -</option>
                 {pokemon.map((onePoke) => (
                   <option key={onePoke.name} value={onePoke.name}>
                     {onePoke.name}
                   </option>
                 ))}
               </select>
-
               {selectedPoke[pokeTeamMember] ? (
                 <div>
                   <img
@@ -81,7 +81,6 @@ const PokemonTeamForm = ({ pokemon }) => {
                     }
                   />
                   <br />
-                  
                 </div>
               ) : null}
             </div>
