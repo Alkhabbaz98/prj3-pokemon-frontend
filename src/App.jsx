@@ -81,7 +81,10 @@ const App = () => {
           path="/pokewiki/pokemons/:pokeName"
           element={<PokemonDetails pokemon={pokemon} typeColors={typeColors} />}
         />
-        <Route path="pokewiki/poketeam" element={<PokemonTeamHomepage />} />
+        <Route
+          path="pokewiki/poketeam"
+          element={<PokemonTeamHomepage token={token} />}
+        />
         <Route
           path="pokewiki/poketeam/new"
           element={
