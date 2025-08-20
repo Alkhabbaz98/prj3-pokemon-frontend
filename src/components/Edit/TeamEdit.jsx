@@ -12,9 +12,10 @@ const TeamEdit = ({ pokemon }) => {
 
   const handleChange = async (event) => {
     setThisTeam({ ...thisTeam, [event.target.name]: event.target.value });
+    if (!event.target.value) return;
     const url = pokemon.find(
       (onePoke) => onePoke.name === event.target.value
-    ).url;
+    )?.url;
     const response = await axios.get(url);
     setSelectedPoke((element) => ({
       ...element,
@@ -37,7 +38,27 @@ const TeamEdit = ({ pokemon }) => {
   const getThisTeam = async (id) => {
     const team = await showTeamById(id);
     setThisTeam(team);
-    console.log(team);
+    console.log("This team:", thisTeam);
+
+    [
+      "pokemon1",
+      "pokemon2",
+      "pokemon3",
+      "pokemon4",
+      "pokemon5",
+      "pokemon6",
+    ].map(async (pokeTeamMember) => {
+      const name = team[pokeTeamMember];
+      if (!name) return;
+      const url = pokemon.find((onePoke) => onePoke.name === name)?.url;
+      if (url) {
+        const response = await axios.get(url);
+        setSelectedPoke((prev) => ({
+          ...prev,
+          [pokeTeamMember]: response.data,
+        }));
+      }
+    });
   };
 
   useEffect(() => {
@@ -68,6 +89,9 @@ const TeamEdit = ({ pokemon }) => {
                 id={pokeTeamMember}
                 value={thisTeam?.[pokeTeamMember] || ""}
               >
+                <option value="" disabled>
+                  - Choose a Pokemon -
+                </option>
                 {pokemon.map((onePoke) => (
                   <option key={onePoke.name} value={onePoke.name}>
                     {onePoke.name}
