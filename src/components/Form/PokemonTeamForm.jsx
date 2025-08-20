@@ -5,6 +5,7 @@ import { createTeam } from "../../../lib/api";
 import "./PokemonTeamForm.css";
 
 const PokemonTeamForm = ({ pokemon }) => {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // form Data:
@@ -30,12 +31,13 @@ const PokemonTeamForm = ({ pokemon }) => {
     setIsSubmitting(true);
 
     setPokeTeam([...pokeTeam, newPokeTeam]);
-    console.log("current poke team: ", pokeTeam);
+    console.log("added success, current poke team: ", pokeTeam);
 
     const response = await createTeam(newPokeTeam);
     if (response.status === 201) {
       setIsSubmitting(false);
     }
+    navigate("pokewiki/poketeam");
   };
 
   return (
