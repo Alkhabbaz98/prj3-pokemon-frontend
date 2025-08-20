@@ -1,20 +1,16 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
-import axios from "axios";
-import { createTeam } from "../../../lib/api";
-import "./PokemonTeamForm.css";
-
-const PokemonTeamForm = ({ pokemon }) => {
-  const navigate = useNavigate();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // form Data:
+import { showTeamById, updateTeam } from "../../../lib/api";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
+const TeamEdit = ({ pokemon }) => {
+  const params = useParams();
+  const [thisTeam, setThisTeam] = useState();
   const [pokeTeam, setPokeTeam] = useState([]);
-  const [newPokeTeam, setNewPokeTeam] = useState({});
   const [selectedPoke, setSelectedPoke] = useState({});
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = async (event) => {
-    setNewPokeTeam({ ...newPokeTeam, [event.target.name]: event.target.value });
+    setThisTeam({ ...thisTeam, [event.target.name]: event.target.value });
     const url = pokemon.find(
       (onePoke) => onePoke.name === event.target.value
     ).url;
@@ -30,15 +26,25 @@ const PokemonTeamForm = ({ pokemon }) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
 
-    setPokeTeam([...pokeTeam, newPokeTeam]);
+    setPokeTeam([...pokeTeam, thisTeam]);
     console.log("added success, current poke team: ", pokeTeam);
 
-    const response = await createTeam(newPokeTeam);
-    if (response.status === 201) {
+    const response = await updateTeam(params.teamId, thisTeam);
+    if (response.status === 200) {
       setIsSubmitting(false);
     }
     navigate("/pokewiki/poketeam");
   };
+
+  const getThisTeam = async (id) => {
+    const team = await showTeamById(id);
+    setThisTeam(team);
+    console.log(team);
+  };
+
+  useEffect(() => {
+    getThisTeam(params.teamId);
+  }, [params.teamId]);
 
   return (
     <>
@@ -62,6 +68,7 @@ const PokemonTeamForm = ({ pokemon }) => {
                 onChange={handleChange}
                 name={pokeTeamMember}
                 id={pokeTeamMember}
+                value={thisTeam?.[pokeTeamMember] || ""}
               >
                 {pokemon.map((onePoke) => (
                   <option key={onePoke.name} value={onePoke.name}>
@@ -95,4 +102,4 @@ const PokemonTeamForm = ({ pokemon }) => {
   );
 };
 
-export default PokemonTeamForm;
+export default TeamEdit;
