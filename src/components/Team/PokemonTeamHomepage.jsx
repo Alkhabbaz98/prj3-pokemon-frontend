@@ -51,7 +51,7 @@ const PokemonTeamHomepage = ({}) => {
                   <div className="myteam-buttons">
                     <button
                       onClick={() =>
-                        navigate(`/pokewiki/poketeam${element._id}/update`)
+                        navigate(`/pokewiki/poketeam/${element._id}/edit`)
                       }
                     >
                       Edit

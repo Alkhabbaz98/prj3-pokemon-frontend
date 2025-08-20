@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import LogoutButton from "./components/LogoutButton/LogoutButton";
 import PokemonTeamForm from "./components/Form/PokemonTeamForm";
 import PokemonTeamHomepage from "./components/Team/PokemonTeamHomepage";
+import TeamEdit from "./components/Edit/TeamEdit";
 
 const App = () => {
   const typeColors = {
@@ -82,11 +83,15 @@ const App = () => {
           element={<PokemonDetails pokemon={pokemon} typeColors={typeColors} />}
         />
         <Route
-          path="pokewiki/poketeam"
+          path="/pokewiki/poketeam"
           element={<PokemonTeamHomepage token={token} />}
         />
         <Route
-          path="pokewiki/poketeam/new"
+          path="/pokewiki/poketeam/:teamId/edit"
+          element={<TeamEdit pokemon={pokemon} />}
+        />
+        <Route
+          path="/pokewiki/poketeam/new"
           element={
             <PokemonTeamForm setPokemon={setPokemon} pokemon={pokemon} />
           }
