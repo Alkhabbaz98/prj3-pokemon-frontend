@@ -1,28 +1,43 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { Link } from "react-router";
-
+import { showTeam , deleteTeam } from "../../../lib/api";
 
 
 const PokemonTeamHomepage = () => {
-  const baseUrl = import.meta.env.VITE_BACK_END_SERVER_URL
-  const [test, setTest] = useState([])
-  const testFun = async () => {
-    await axios.showTeam(`${baseUrl}/pokewiki/new`)
-  }
-  
-  return (
-    <div>
-      <Link to="myteam">
-        <div>My teams</div>
-      </Link>
 
-      <Link to="new">
-        <div>Create teams</div>
-      </Link>
-    </div>
+  const [teams, setTeams] = useState()
+  
+  const getAllTeams = async () => {
+    const getTeam = await showTeam();
+    setTeams(getTeam);
+  }
+
+  console.log(teams)
+  
+  useEffect(() => {
+    getAllTeams();
+  }, []);
+
+  return (
+    <>
+    {teams?.map(element => {
+      return <>
+      <p>{element.pokemon1}</p>
+      <p>{element.pokemon2}</p>
+      <p>{element.pokemon3}</p>
+      <p>{element.pokemon4}</p>
+      <p>{element.pokemon5}</p>
+      <p>{element.pokemon6}</p>
+      <button>Edit</button>
+      <button onClick={()=>{ const deletedTeam = deleteTeam(element._id); setTeams(teams.filter(()=> element.id!== deletedTeam._id))}}>Delete</button>
+      <br />
+      </>
+    })}
+    </>
+      
   );
-  return <div></div>;
+  
 };
 
 export default PokemonTeamHomepage;
