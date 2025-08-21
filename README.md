@@ -1,6 +1,6 @@
-<a href="https://unit-2-prj-combo-recipe.onrender.com">
-    <img src="https://4kwallpapers.com/images/wallpapers/pokemon-go-5k-black-1920x1080-21680.png" alt="Pokemon img">
-    </a>
+
+<img src="https://4kwallpapers.com/images/wallpapers/pokemon-go-5k-black-1920x1080-21680.png" >
+
 <h1>DESCRIPTION</h1> 
 <hr>
 <p>PokeWiki is a website made for the Pokemon community where they can check a list of Pokemons, create a team of 6 Pokemons, edit or even delete the team. 
@@ -13,7 +13,8 @@ For example, this is Mewtwo's page: </p>
 <p>The followings are everything that has been used to complete the project as an outside sources:</p>
 <ul>
 <li><a href="https://www.w3schools.com/">W3Schools</li>
-<li><a href="https://developer.mozilla.org/en-US/">PokeApi API</li>
+<li><a href="https://pokeapi.co/api/v2/pokemon?limit=151">PokeApi API</li>
+<li><a href="https://pokeapi.co/docs/v2#wrap">PokeApi API Documentation</li>
 <li><a href="https://github.com/GA-SEB-8/JWT-Auth-Frontend">GA Authentication Lesson</li>
 <li><a href="https://github.com/GA-SEB-8/pets-frontend">GA Frontend Example </li>
 <li><a href="https://github.com/GA-SEB-8/Pets-backend">GA Backend Example</li>
