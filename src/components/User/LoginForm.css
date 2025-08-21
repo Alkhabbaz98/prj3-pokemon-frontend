@@ -8,17 +8,17 @@
 }
 .login {
   border-bottom: none;
-  margin-bottom: 275px;
-  font-size: 100px;
+  margin-bottom: 225px;
+  font-size: 75px;
   color: black;
 }
 
 /* Pokeball / form container */
 .form-container {
-  width: 800px;
-  height: 800px;
+  width: 650px;
+  height: 650px;
   border-radius: 50%;
-  border: 30px solid black;
+  border: 20px solid black;
   background: linear-gradient(to bottom, red 50%, white 50%);
   position: relative;
   display: flex;
@@ -30,25 +30,25 @@
 .stripe {
   position: absolute;
   width: 100%;
-  height: 30px;
+  height: 20px;
   background: black;
 }
 
 /* Circle in the middle of pokeball */
 .circle {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 30px solid black;
+  width: 150px;
+  height: 150px;
+  border: 20px solid black;
   border-radius: 50%;
   background: white;
 }
 
 .login-input {
   height: 25px;
-  width: 400px;
+  width: 300px;
   border-radius: 12px;
-  font-size: 20px;
+  font-size: 18px;
   padding: 15px;
 }
 
@@ -56,7 +56,7 @@
   background-color: red;
   color: white;
   border-radius: 12px;
-  width: 200px;
+  width: 150px;
   margin-left: 100px;
-  font-size: 20px;
+  font-size: 18px;
 }
